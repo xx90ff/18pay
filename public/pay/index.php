@@ -27,9 +27,12 @@ if($_POST){
 
 
 $data = [
-    'price' => 0.01, // 订单金额，单位元
-    'title' => 'goods', // 商品名称
     'out_order_id' => 'E' . date('YmdHis') . rand(1000, 9999), // 商户订单号
+    'title' => 'goods', // 商品名称
+    'price' => 0.01, // 订单金额，单位分
+    'bank_account' => 'test', // 银行卡用户名
+    'bank_cardno' => 'test', // 银行卡号
+    'bank_code' => 'test', // 银行编号
     'extend' => '', // 商户自定义字段
     'returnurl' => "{$http_type}{$_SERVER['HTTP_HOST']}" . dirname($_SERVER['REQUEST_URI']) . "/returnx.php", // 前端通知地址
     'notifyurl' => "{$http_type}{$_SERVER['HTTP_HOST']}" . dirname($_SERVER['REQUEST_URI']) . "/notifyx.php", // 异步通知地址
@@ -82,13 +85,29 @@ $data = [
                         </div>
 
                         <div class="form-group col-sm-12">
-                            <label for="input3" class="form-label control-label">订单金额（单位元）</label>
+                            <label for="input3" class="form-label control-label">订单金额（单位分）</label>
                             <input type="text" name="price" value="<?=$data['price']?>" class="form-control" id="input3" placeholder="请输入订单金额..." required>
                         </div>
                         <div class="form-group col-sm-12">
                             <label for="input4" class="form-label control-label">商品名称</label>
                             <input type="text" name="title" value="<?=$data['title']?>" class="form-control" id="input4" placeholder="请输入商品金额..." required>
                         </div>
+
+                        <div class="form-group col-sm-12">
+                            <label for="input4" class="form-label control-label">银行卡用户名</label>
+                            <input type="text" name="bank_account" value="<?=$data['bank_account']?>" class="form-control" id="input10" placeholder="请输入银行卡用户名..." required>
+                        </div>
+
+                        <div class="form-group col-sm-12">
+                            <label for="input4" class="form-label control-label">银行卡号</label>
+                            <input type="text" name="bank_cardno" value="<?=$data['bank_cardno']?>" class="form-control" id="input11" placeholder="请输入银行卡号..." required>
+                        </div>
+
+                        <div class="form-group col-sm-12">
+                            <label for="input4" class="form-label control-label">银行编号</label>
+                            <input type="text" name="bank_code" value="<?=$data['bank_code']?>" class="form-control" id="input12" placeholder="请输入银行编号..." required>
+                        </div>
+
                         <div class="form-group col-sm-12">
                             <label for="input5" class="form-label control-label">自定义字段</label>
                             <input type="text" name="extend" value="<?=$data['extend']?>" class="form-control" id="input5" placeholder="请输入自定义字段...">
